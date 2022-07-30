@@ -1,0 +1,31 @@
+<!-- Tabla donde se muestran los usuarios -->
+<table class="table">
+  <!-- Titulo de las columnas  -->
+  <thead>
+    <td>Nombre</td>
+    <td>Direccion</td>
+    <td>Telefono</td>
+    <td>Codigo Postal</td>
+    <td>Estado</td>
+    <td>Ciudad</td>
+    <td></td>
+    <td></td>
+  </thead>
+  <tbody>
+    <!-- Iteracion de se muestran los usuarios tomados de la base de datos  -->
+    <tr *ngFor="let usuario of listaUsuarios">
+      <td>{{ usuario.nombre }}</td>
+      <td>{{ usuario.direccion }}</td>
+      <td>{{ usuario.telefono }}</td>
+      <td>{{ usuario.codigoPostal }}</td>
+      <td>{{ usuario.estado }}</td>
+      <td>{{usuario.ciudad}}</td>
+      <td>
+        <i (click)="actualizarUsuario(usuario)"  class="far fa-edit"></i>
+      </td>
+      <td>
+        <i (click)="eliminarUsuario(usuario.id)" class="far fa-trash-alt text-danger"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>

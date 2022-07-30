@@ -1,0 +1,72 @@
+<!-- Apartado visual del componente Add-book, aqui se encuentran el formulario para almacenar libro y editarlo -->
+
+<!-- Input de Nombre usuario -->
+<form  [formGroup]="form" (ngSubmit)="agregar()">
+  <span *ngIf="submitted  && form.invalid"></span>
+    <div class="form-group">
+      <label>Nombre </label>
+      <div class="input-group">
+        <input type="text" formControlName="nombre" class="form-control" />
+      </div>
+    </div>
+    <br />
+    <!-- Input de la direccion del cliente -->
+    <div class="form-group">
+      <label>Dirección</label>
+      <div class="input-group">
+        <input type="text" formControlName="direccion" class="form-control" />
+      </div>
+    </div>
+    <br />
+    <!-- Input del telefono del usuario-->
+    <div class="form-group">
+      <label> Telefono</label>
+      <div class="input-group">
+        <input type="tel" formControlName="telefono" class="form-control" maxlength="10"/>
+      </div>
+    </div>
+    <br />
+    <!-- Input del Codigo Postal  -->
+    <div class="form-group">
+        <label> Codigo Postal</label>
+      <div class="input-group">
+        <input type="text" formControlName="codigoPostal" class="form-control" pattern="[0-9]{5}" title="Codigo postal de solo 5 numeros" maxlength="5"/>
+      </div>
+    </div>
+    <br />
+    <!-- Input del Estado del usuario -->
+    <div class="form-group">
+      <label> Estado donde vive</label>
+      <div class="input-group">
+        <select (change)="estado()" class="form-select"  formControlName="estado" >
+          
+        <option *ngFor="let estado of listaEstados" [value]="estado">{{estado}}</option>
+
+      </select>
+      </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+      <label> Ciudad donde vive</label> 
+        <div class="input-group">
+        <select class="form-select" formControlName="ciudad" (click)="ciudad(estadoCiudad)">
+          
+          <option *ngFor="let ciudad of listaCiudad" [value]="ciudad">{{ciudad}}</option>
+          
+        </select>
+        </div>
+        
+      </div>
+      <br>
+    <div class="form-group">
+      <button
+        class="btn btn-primary btn-lg btn-block"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        <i class="fas fa-database"></i> Añadir Usuario!
+      </button>
+    </div>
+  </form>
+  

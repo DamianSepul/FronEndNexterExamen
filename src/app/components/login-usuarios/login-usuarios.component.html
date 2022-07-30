@@ -1,0 +1,59 @@
+<!-- Aparatdo visual del login -->
+<div class="row">
+  <div class="col-md-6 mx-auto mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="text-center">Inicio de sesión de Admin</h1>
+        <br />
+        <form [formGroup]="form" (ngSubmit)="Login()">
+            <!-- Input donde se introduce el usuario -->
+          <div class="form-group">
+            <label>Usuario </label>
+            <div class="input-group">
+              <input
+                type="text"
+                formControlName="usuario"
+                class="form-control"
+                id="usuario"
+              />
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="usuario.errors?.['required'] && (usuario.dirty || usuario.touched)"
+            >
+              Usuario es Requerido!
+            </div>
+          </div>
+          <br />
+          <div class="form-group">
+            <!-- Input donde se introduce la contraseña -->
+            <label>Contraseña </label>
+            <div class="input-group">
+              <input
+                type="password"
+                formControlName="contrasena"
+                class="form-control"
+                id="contrasena"
+              />
+            </div>
+            <div
+              class="form-text text-danger"
+              *ngIf="contrasena.errors?.['required'] && (contrasena.dirty || contrasena.touched)"
+            >
+              Contraseña es Requerida!
+            </div>
+          </div>
+          <br />
+          <!-- Boton para enviar el formulario -->
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
