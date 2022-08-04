@@ -22,7 +22,7 @@
     <div class="form-group">
       <label> Telefono</label>
       <div class="input-group">
-        <input type="tel" formControlName="telefono" class="form-control" maxlength="10"/>
+        <input type="tel" formControlName="telefono" class="form-control" maxlength="10" pattern="^\d{10}$"/>
       </div>
     </div>
     <br />
@@ -38,7 +38,7 @@
     <div class="form-group">
       <label> Estado donde vive</label>
       <div class="input-group">
-        <select (change)="estado()" class="form-select"  formControlName="estado" >
+        <select  class="form-select"  formControlName="estado"  (click)="estado()">
           
         <option *ngFor="let estado of listaEstados" [value]="estado">{{estado}}</option>
 
@@ -50,7 +50,7 @@
     <div class="form-group">
       <label> Ciudad donde vive</label> 
         <div class="input-group">
-        <select class="form-select" formControlName="ciudad" (click)="ciudad(estadoCiudad)">
+        <select class="form-select" formControlName="ciudad" (click)="ciudad()" >
           
           <option *ngFor="let ciudad of listaCiudad" [value]="ciudad">{{ciudad}}</option>
           

@@ -6,6 +6,7 @@ import estados from '../../../app/estados.json';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { ListaUsuariosComponent } from '../lista-usuarios/lista-usuarios.component';
+import { discardPeriodicTasks } from '@angular/core/testing';
 
 @Injectable({ providedIn: 'root' })
 @Component({
@@ -61,14 +62,21 @@ export class AgregarUsuarioComponent implements OnInit {
           nombre: data.nombre,
           direccion: data.estado,
           telefono: data.telefono,
-          codigoPostal: data.codigoPostal,
+          codigoPostal: data.codigoPostal
         });
+        this.form.get('estado')?.setValue(data.estado);
+        this.estadoCiudad = data.estado
+        this.ciudad()
+        this.form.get('ciudad')?.setValue(data.ciudad);
         this.id = data.id;
+        console.log(data);
       },
       (error) => {
         console.log(error);
       }
     );
+
+    
   }
 
   ngOnDestroy() {
@@ -140,7 +148,7 @@ export class AgregarUsuarioComponent implements OnInit {
       this.estadoCiudad = this.form.value.estado;
   }
   //Como estado como parametro, se busca el listado de ciudades
-  ciudad(xestado: any) {
+  public ciudad() {
     this.listaCiudad = ciudades[this.estadoCiudad];
   }
 }
